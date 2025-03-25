@@ -29,7 +29,8 @@ export default {
     return {
       email: "georgina@merit.com",
       password: "123456",
-      token: ""
+      token: "",
+      errorMessage: ""
     }
   },
   mounted() {
@@ -47,17 +48,28 @@ export default {
           },
           body: JSON.stringify({ "email": this.email, "password": this.password })
         })
+        if (!response.ok) {
+          throw new Error("Credenciales incorrectas");
+        }
         const data = await response.json()
-        //console.log(data)
-        this.token = data.token
-        localStorage.setItem("token", data.token)
-        this.userStore.token = this.token
-        this.userStore.loggedIn = true
-        this.userStore.user = data.user
-        this.$router.push('/auth');
+
+        if (data.token != undefined) {
+          this.token = data.token
+          localStorage.setItem("token", data.token)
+          this.userStore.token = this.token
+          this.userStore.loggedIn = true
+          this.userStore.user = data.user
+          this.$router.push('/auth');
+        } else {
+          this.errorMessage = "User not found or Incorrect Password"
+          throw new Error("Credenciales incorrectas");
+        }
+
       }
       catch (error) {
-        response.send({ msg: "Error", error: error.message })
+        console.error("Error login:", error.message);
+        this.errorMessage = error.message || "Unknown Error";
+        this.$router.push('/');
       }
     }
   }
