@@ -141,7 +141,7 @@ export default {
     },
     handleDragOver(event) {
       this.dragZone = event.target.id
-      console.log(`Drag over ${this.dragZone} item ${this.draggedItem}`)
+      //console.log(`Drag over ${this.dragZone} item ${this.draggedItem}`)
     },
     async handleDrop(event) {
       //this.dragZone = event.target.id
@@ -160,7 +160,7 @@ export default {
             },
             body: JSON.stringify({ "status_id": this.dragZone })
           });
-          console.log("Response fetch Patch", response)
+          //console.log("Response fetch Patch", response)
           this.fetchTodos()
         }
       } catch {
