@@ -12,6 +12,7 @@
         <input type="email" name="email" id="email" v-model="email" placeholder="Enter email address">
         <input type="password" name="password" id="password" v-model="password" placeholder="Enter password">
         <button class="button_primary" @click="login">Sign-in</button>
+        <p class="flex justify-center text-red-800 bg-red-200">{{ errorMessage }}</p>
       </div>
     </div>
   </div>
@@ -49,7 +50,7 @@ export default {
           body: JSON.stringify({ "email": this.email, "password": this.password })
         })
         if (!response.ok) {
-          throw new Error("Credenciales incorrectas");
+          throw new Error("Error login");
         }
         const data = await response.json()
 
@@ -62,7 +63,7 @@ export default {
           this.$router.push('/auth');
         } else {
           this.errorMessage = "User not found or Incorrect Password"
-          throw new Error("Credenciales incorrectas");
+          throw new Error("Error login");
         }
 
       }
