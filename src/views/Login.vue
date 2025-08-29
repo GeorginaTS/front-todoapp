@@ -1,8 +1,11 @@
 <template>
   <div class="flex gap-10 p-4 justify-between w-full bg-green2 h-full">
     <div class="w-full p-4 flex flex-col justify-center items-center h-full">
-      <h1>Welcome to toDo APP</h1>
-      <br><br><br>
+      <h1>Welcome to toDo APP</h1><br>
+      <p class=" flex text-sm text-yellow-50 max-w-96 justify-center text-center bg-green3 p-2">Note:<br> This site is hosted on Azure’s free tier.<br>
+Because free apps don’t support Always On, the server “goes to sleep” when not in use.
+That means the first visit after some idle time can take a bit longer to load.</p>
+      <br><br>
       <RouterLink to="/register">
         <button class="button_primary">Register</button>
       </RouterLink>

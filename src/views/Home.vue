@@ -147,7 +147,7 @@ export default {
       //this.dragZone = event.target.id
       // this.draggedItem = event.dataTransfer.getData("item_id")
 
-      console.log(`DROP task ${this.draggedItem} into ${this.dragZone}`)
+      //console.log(`DROP task ${this.draggedItem} into ${this.dragZone}`)
       // update status
       try {
         if (this.dragZone) {
